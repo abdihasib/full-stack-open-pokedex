@@ -8,13 +8,16 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-20.04
+
     steps:
       - name: Say hello
         run: |
           echo "Hello World!"
       
       - name: date
-        run: date
+        run: |
+          date
 
       - name: list
-        run: ls
+        run: | 
+          ls
