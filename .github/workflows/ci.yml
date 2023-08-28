@@ -6,15 +6,19 @@ on:
       # note that your "main" branch might be called main instead of master
 
 jobs:
-  hello_world_job:
+  deployment-pipeline:
     runs-on: ubuntu-20.04
-    steps:
-      - name: Say hello
-        run: 
-          echo "Hello World!"
-      
-      - name: date
-        run: date
 
-      - name: list
-        run: ls
+    steps: 
+    # "Uses" keyword tells the workflow to run a specific action, in this case the checkout action to checkout project source code
+    - uses: actions/checkout@v3
+    # Setup node environment becauase the project uses/needs it
+    - uses: actions/setup-node@v3
+      # "With" keyword is used to pass a parameter to the action
+      with:
+        node-version: 16
+    
+    - name: Install dependencies
+      run: npm install
+
+    - run: npm run eslint
