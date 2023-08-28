@@ -13,18 +13,17 @@ jobs:
       - name: Say hello
         run: |
           echo "Hello World!"
-      
-      - name: say bye
-        run: |
-          echo "bye"
-      
-      - name: say hey
-        run: echo "hey"
-        
-      - name: date
-        run: |
-          date
+  
+  date_job:
+    runs-on: ubuntu-20.04
 
+    steps:
+      - name: date
+        run: date
+
+  list-job:
+    runs-on: ubuntu-20.04
+
+    steps:
       - name: list
-        run: | 
-          ls
+        run: ls
